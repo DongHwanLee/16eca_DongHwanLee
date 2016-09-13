@@ -1,45 +1,23 @@
-# -*- coding: utf8 -*-
-
 import math
-
 import root_finding
-
 def problem_to_solve(radius_m):
     """
     :param radius_m:
     :return:
     """
     safety_factor = 2.0
-
     stress_max_Pa = 207e6
-
     force_N = 100
 
-    result = circular_section_stress(radius_m, force_N) - stress_max_Pa / safety_factor
-
-    return result
-
-
-def circular_section_stress(r_m, force_N):
-    """
-
-    :param r_m:
-    :param force_N:
-    :return:
-    """
-    area_m2 = r_m * r_m * math.pi
-    stress_Pa = force_N / area_m2
     return stress_Pa
 
 def main():
     x_l_init = root_finding.epsilon_global * 2
-
     x_h_init = 1.0
-
-    result = root_finding.bisection(problem_to_solve, x_l_init, x_h_init, 1e-9)
+    result = root.finding.blsection(problem_to_solve, x_l_init, x_h_init, 1e-9)
 
     print "result =", result
 
 if "__main__" == __name__:
     main()
-
+    
